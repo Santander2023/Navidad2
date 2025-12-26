@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Navidad mi nera 🎄</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #1a2a3a, #0f2027);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Luces */
+.luces {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
+.luz {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    animation: parpadear 1.5s infinite alternate;
+}
+.luz:nth-child(odd) { background: red; }
+.luz:nth-child(even) { background: gold; }
+
+@keyframes parpadear {
+    from { opacity: .3; }
+    to { opacity: 1; }
+}
+
+/* Tarjeta */
+.card {
+    background: rgba(255,255,255,.15);
+    backdrop-filter: blur(14px);
+    border-radius: 30px;
+    padding: 25px;
+    width: 90%;
+    max-width: 520px;
+    margin: 30px auto;
+    box-shadow: 0 0 40px rgba(255,255,255,.3);
+    animation: aparecer 1.8s ease;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: scale(.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+
+@keyframes brillo {
+    to { background-position: 200%; }
+}
+
+img {
+    width: 180px;
+    border-radius: 15px;
+    margin: 15px 0;
+}
+
+p {
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+
+button {
+    margin: 8px;
+    padding: 12px 22px;
+    border-radius: 25px;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    background: white;
+    color: #0f2027;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px white;
+}
+
+.firma {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Nieve */
+.float {
+    position: fixed;
+    top: -10px;
+    animation: caer linear infinite;
+}
+@keyframes caer {
+    to { transform: translateY(110vh); }
+}
+
+/* Fuegos */
+.firework {
+    position: fixed;
+    font-size: 30px;
+    animation: boom 1s ease-out forwards;
+}
+@keyframes boom {
+    from { transform: scale(.3); opacity: 1; }
+    to { transform: scale(2); opacity: 0; }
+}
+
+/* SCREAMER */
+#screamer {
+    position: fixed;
+    inset: 0;
+    background: black;
+    display: none;
+    z-index: 99999;
+}
+#screamer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+</style>
+</head>
+
+<body>
+
+<div class="luces">
+    <div class="luz"></div><div class="luz"></div><div class="luz"></div>
+    <div class="luz"></div><div class="luz"></div><div class="luz"></div>
+</div>
+
+<div class="card">
+    <div class="nombre">🎄Feliz Navidad Busty 🎄</div>
+
+    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmRtMHpuMWFlenkxcTk4aXF1NjVmY2hwbzExOWZpbzByN2lxaTczcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gNke2UrUTopOg/giphy.gif">
+
+    <p>
+        En esta Navidad quiero recordarte lo especial que eres.
+        Gracias por tu amistad, por tu apoyo y por cada sonrisa.
+        Tenerte en mi vida es uno de mis mejores regalos.
+    </p>
+
+    <p>
+        Que estas fiestas te llenen de paz, amor y esperanza,
+        y que el nuevo año venga cargado de cosas bonitas para ti ✨🎁
+    </p>
+
+    <div class="firma">
+        Con mucho cariño,<br>
+        tu insano xd ❤️
+    </div>
+
+    <button onclick="mensaje()">🎁 Deseo</button>
+    <button onclick="toggleMusic()">🎶 Música</button>
+    <button onclick="fuegos()">🎆 Fuegos</button>
+    <button onclick="No_tocar()"> No tocar</button>
+</div>
+
+<!-- YouTube Snowman -->
+<iframe id="youtube" width="0" height="0"
+src="https://youtu.be/gset79KMmt0?si=tj-ZbUj3FWBGAM3q"
+allow="autoplay"></iframe>
+
+<script>
+// YouTube
+let player, playing=false;
+let tag=document.createElement("script");
+tag.src="https://youtu.be/gset79KMmt0?si=tj-ZbUj3FWBGAM3q/iframe_api";
+document.body.appendChild(tag);
+
+function onYouTubeIframeAPIReady(){
+    player=new YT.Player("ytPlayer");
+}
+
+function toggleMusic(){
+    if(!player) return;
+    playing ? player.pauseVideo() : player.playVideo();
+    playing=!playing;
+}
+
+// Mensaje
+function mensaje(){
+    alert("✨ Que todos tus sueños se hagan realidad y feliz cumpleaños😌✨");
+}
+
+
+// Nieve
+for(let i=0;i<40;i++) crear("❄");
+function crear(sim){
+    let e=document.createElement("div");
+    e.className="float";
+    e.innerHTML=sim;
+    e.style.left=Math.random()*100+"vw";
+    e.style.fontSize=Math.random()*20+15+"px";
+    e.style.animationDuration=Math.random()*5+5+"s";
+    document.body.appendChild(e);
+}
+
+// Fuegos
+function fuegos(){
+    for(let i=0;i<20;i++){
+        let f=document.createElement("div");
+        f.className="firework";
+        f.innerHTML="🎆";
+        f.style.left=Math.random()*100+"vw";
+        f.style.top=Math.random()*100+"vh";
+        document.body.appendChild(f);
+        setTimeout(()=>f.remove(),1000);
+    }
+}
+
+// SCREAMER
+function No_tocar(){
+    alert("✨ chupala pa q tocas 🖕 xd");
+}
+
+// Easter Egg
+document.addEventListener("keydown", e=>{
+    if(e.key==="n"){
+        alert("🥚 Easter Egg desbloqueado 🎄🔥");
+    }
+});
+</script>
+
+</body>
+</html>
