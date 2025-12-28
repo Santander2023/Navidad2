@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ti ❤️</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: radial-gradient(circle at top, #1a0004, #050001);
+    color: #fff;
+    text-align: center;
+  }
+
+  .overlay {
+    min-height: 100vh;
+    background: rgba(0,0,0,0.65);
+    padding: 60px 18px;
+  }
+
+  h1 {
+    color: #ffd1dc;
+    font-size: 2.4em;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.12);
+    border-radius: 30px;
+    padding: 35px;
+    max-width: 560px;
+    margin: auto;
+    box-shadow: 0 0 45px rgba(0,0,0,0.8);
+  }
+
+  p {
+    font-size: 1.15em;
+    line-height: 1.9;
+    color: #ffe6ea;
+  }
+
+  button {
+    margin-top: 25px;
+    background: linear-gradient(135deg, #ff4d6d, #ff8fab);
+    border: none;
+    border-radius: 35px;
+    padding: 16px 36px;
+    font-size: 1.05em;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(255,77,109,0.9);
+    transition: transform .2s;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .options button {
+    margin: 12px;
+    padding: 14px 30px;
+  }
+
+  .response {
+    margin-top: 25px;
+    font-size: 1.9em;
+  }
+
+  .photo img {
+    width: 220px;
+    border-radius: 22px;
+    box-shadow: 0 0 30px rgba(255,150,180,.9);
+    margin-top: 25px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+  <h1>❤️ Para ti ❤️</h1>
+
+  <div class="card">
+    <p>
+      La Navidad ya pasó, pero el sentimiento no.
+      Hay palabras que no tienen fecha,
+      emociones que no dependen del calendario.
+    </p>
+
+    <p>
+      Quería decirte que llegaste a mi vida
+      de una forma que no esperaba,
+      y desde entonces todo se siente un poco más cálido,
+      incluso en los días más normales.
+    </p>
+
+    <p>
+      Esto no es solo un mensaje,
+      es algo que siento de verdad.
+    </p>
+
+    <button onclick="togglePregunta()">✨ Mírame</button>
+
+    <div id="pregunta" class="hidden">
+      <p style="margin-top:30px;font-size:1.4em;">
+        ¿Quieres seguir caminando conmigo?
+      </p>
+
+      <div class="options">
+        <button onclick="respuestaSi()">💖 Sí</button>
+        <button onclick="respuestaNo()">😢 No</button>
+      </div>
+    </div>
+
+    <div id="respuesta" class="response hidden"></div>
+
+    <div id="photo" class="photo hidden">
+      <!-- 📸 CAMBIA ESTA FOTO POR UNA DE USTEDES -->
+      <img src="" alt="Nosotros">
+    </div>
+
+    <p style="margin-top:35px;">
+      Con todo mi corazón,<br>
+      <strong>Juan 💫</strong>
+    </p>
+  </div>
+</div>
+
+<!-- 🎶 Música romántica -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  let visible = false;
+
+  function togglePregunta() {
+    const pregunta = document.getElementById("pregunta");
+    const respuesta = document.getElementById("respuesta");
+    const photo = document.getElementById("photo");
+
+    visible = !visible;
+
+    if (visible) {
+      pregunta.classList.remove("hidden");
+    } else {
+      pregunta.classList.add("hidden");
+      respuesta.classList.add("hidden");
+      photo.classList.add("hidden");
+      respuesta.innerHTML = "";
+    }
+  }
+
+  function respuestaSi() {
+    const respuesta = document.getElementById("respuesta");
+    const photo = document.getElementById("photo");
+
+    respuesta.innerHTML = "Entonces quédate conmigo… hoy, mañana y siempre ❤️";
+    respuesta.classList.remove("hidden");
+    photo.classList.remove("hidden");
+  }
+
+  function respuestaNo() {
+    const respuesta = document.getElementById("respuesta");
+    const photo = document.getElementById("photo");
+
+    respuesta.innerHTML = "😢";
+    respuesta.classList.remove("hidden");
+    photo.classList.add("hidden");
+  }
+</script>
+
+</body>
+</html>
